@@ -220,9 +220,8 @@ jobs:
           override_sens \
           now_line \
           lnl_icon \
-          2002
-          #\
-          #basal_lock
+          2002 \
+          basal_lock
 
           # LoopWorkspace patches
           # -applies any patches located in the LoopWorkspace/patches/ directory
