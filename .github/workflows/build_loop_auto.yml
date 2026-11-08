@@ -218,7 +218,6 @@ jobs:
           /bin/bash -c "$(curl -fsSL \
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
           override_sens \
-          lnl_icon \
           profiles \
           basal_lock
           
