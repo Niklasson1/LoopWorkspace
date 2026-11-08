@@ -189,9 +189,11 @@ jobs:
           #   the line following a "\" cannot be blank - that causes the Action to never complete
           /bin/bash -c "$(curl -fsSL \
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
-          override_sens \
-          profiles \
-          basal_lock
+          override_sens
+
+          # Profile Save & Load and Basal Lock for next-dev (loopandlearn/customization PR #112 and #113)
+          curl -fsSL https://raw.githubusercontent.com/loopandlearn/customization/efbade13d9a83371ec8235b11756eaed9e8e03b7/profiles/nextdev_profiles.patch | git apply --whitespace=nowarn -v
+          curl -fsSL https://raw.githubusercontent.com/loopandlearn/customization/ab4d17bd519d10bbf42a1be3c20e7cf201098430/basal_lock/nextdev_basal_lock.patch | git apply --whitespace=nowarn -v
           
           # LoopWorkspace patches
           # -applies any patches located in the LoopWorkspace/patches/ directory
