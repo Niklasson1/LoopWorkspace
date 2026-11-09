@@ -184,9 +184,12 @@ jobs:
       - name: Customize Loop
         run: |
 
-          # Profile Save & Load and Basal Lock for next-dev (loopandlearn/customization)
-          curl -fsSL https://raw.githubusercontent.com/loopandlearn/customization/main/profiles/nextdev_profiles.patch | git apply --whitespace=nowarn -v
-          curl -fsSL https://raw.githubusercontent.com/loopandlearn/customization/main/basal_lock/nextdev_basal_lock.patch | git apply --whitespace=nowarn -v
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          profiles basal_lock
           
           # LoopWorkspace patches
           # -applies any patches located in the LoopWorkspace/patches/ directory
