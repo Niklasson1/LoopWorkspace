@@ -1,0 +1,19 @@
+diff --git a/G7SensorKit/G7SensorKit/G7CGMManager/G7BluetoothManager.swift b/G7SensorKit/G7SensorKit/G7CGMManager/G7BluetoothManager.swift
+--- a/G7SensorKit/G7SensorKit/G7CGMManager/G7BluetoothManager.swift
++++ b/G7SensorKit/G7SensorKit/G7CGMManager/G7BluetoothManager.swift
+@@ -525,12 +525,8 @@
+     /// Stock path only (no arm): an active peripheral reconnects on its own; anything else rescans.
+     private func resumeAfterLinkEnded(_ peripheral: CBPeripheral) {
+         dispatchPrecondition(condition: .onQueue(managerQueue))
+-        guard peripheral == activePeripheral, centralManager.state == .poweredOn else {
+-            managerQueue.asyncAfter(deadline: .now() + 2) { [weak self] in
+-                self?.managerQueue_scanForPeripheral()
+-            }
+-            return
++        managerQueue.asyncAfter(deadline: .now() + 2) { [weak self] in
++            self?.managerQueue_scanForPeripheral()
+         }
+-        reconnectAfterAdvertisingTail(peripheral)
+     }
+ 
+     // MARK: - Accessors
